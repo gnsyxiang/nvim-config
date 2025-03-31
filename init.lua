@@ -23,6 +23,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
 	{import = "plugins.colorscheme"},
 	{import = "plugins.nvim-tree"},
+	{import = "plugins.gitsigns"},
 }, {
 	install = {colorscheme = { "gruvbox" }}, -- 安装后自动应用主题
 	checker = {enabled = true}, -- 自动检查更新
