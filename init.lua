@@ -25,6 +25,7 @@ require("lazy").setup({
 	{import = "plugins.nvim-tree"},
 	{import = "plugins.gitsigns"},
 	{import = "plugins.bufferline"},
+	{import = "plugins.lualine"},
 }, {
 	install = {colorscheme = { "gruvbox" }}, -- 安装后自动应用主题
 	checker = {enabled = true}, -- 自动检查更新
