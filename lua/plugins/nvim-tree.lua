@@ -71,9 +71,11 @@ end
 
 return {
 	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" }, -- 文件图标依赖
-		keys = {
+		url="git@github.com:nvim-tree/nvim-tree.lua",
+		dependencies = { url="git@github.com:nvim-tree/nvim-web-devicons" }, -- 文件图标依赖
+		keys =  IS_MAC and {
+			{ "<M-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer" } -- 快捷键映射
+			or
 			{ "<A-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer" } -- 快捷键映射
 		},
 		opts = {
@@ -135,7 +137,7 @@ return {
 
 	-- 图标插件配置
 	{
-		"nvim-tree/nvim-web-devicons",
+		url="git@github.com:nvim-tree/nvim-web-devicons",
 		lazy = true
 	}
 }

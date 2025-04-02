@@ -3,7 +3,7 @@
 return {
   -- Gruvbox 主题插件
   {
-    "ellisonleao/gruvbox.nvim",
+    url="git@github.com:ellisonleao/gruvbox.nvim",
     priority = 1000, -- 确保优先加载
     opts = {
       contrast = "hard", -- 对比度模式：hard/medium/soft
@@ -26,8 +26,8 @@ return {
 
   -- 可选：搭配状态栏插件
   {
-    "nvim-lualine/lualine.nvim",
-    dependencies = { "ellisonleao/gruvbox.nvim" },
+    url="git@github.com:nvim-lualine/lualine.nvim",
+    dependencies = { url="git@github.com:ellisonleao/gruvbox.nvim" },
     opts = {
       options = {
         theme = "gruvbox", -- 同步状态栏主题
