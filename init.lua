@@ -1,5 +1,11 @@
 
 
+local system_name = vim.loop.os_uname().sysname
+
+_G.IS_MAC = system_name == "Darwin"
+_G.IS_LINUX = system_name == "Linux"
+_G.IS_WINDOWS = system_name == "Windows_NT"
+
 
 require("options")
 require("keymaps")
