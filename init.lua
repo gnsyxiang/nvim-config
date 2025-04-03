@@ -28,6 +28,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{import = "plugins.colorscheme"},
+	{import = "plugins.nvim-web-devicons"},
 	{import = "plugins.nvim-tree"},
 	{import = "plugins.gitsigns"},
 	{import = "plugins.bufferline"},

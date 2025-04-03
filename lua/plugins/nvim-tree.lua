@@ -133,10 +133,5 @@ return {
 		end
 	},
 
-	-- 图标插件配置
-	{
-		"nvim-tree/nvim-web-devicons",
-		lazy = true
-	}
 }
 
