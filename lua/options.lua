@@ -45,3 +45,19 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+if IS_MAC then
+	vim.opt.clipboard:prepend({ "unnamedplus", "unnamed" })
+elseif IS_LINUX then
+	vim.g.clipboard = {
+		name = "xclip",
+		copy = {
+			["+"] = "xclip -selection clipboard",
+			["*"] = "xclip -selection clipboard",
+		},
+		paste = {
+			["+"] = "xclip -selection clipboard -o",
+			["*"] = "xclip -selection clipboard -o",
+		},
+	}
+end
+

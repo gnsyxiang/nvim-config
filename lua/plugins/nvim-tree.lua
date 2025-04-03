@@ -74,7 +74,7 @@ return {
 		"nvim-tree/nvim-tree.lua",
 		dependencies = { "nvim-tree/nvim-web-devicons" }, -- 文件图标依赖
 		keys = {
-			{ "<A-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer" } -- 快捷键映射
+			{IS_MAC and "<M-n>" or "<A-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"}
 		},
 		opts = {
 			on_attach = on_attach,
