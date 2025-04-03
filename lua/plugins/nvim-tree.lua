@@ -71,7 +71,7 @@ local function on_attach(bufnr)
 end
 
 return {
-	"nvim-tree/nvim-tree.lua",
+	url = "git@github.com:nvim-tree/nvim-tree.lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
 		{IS_MAC and "<M-n>" or "<A-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"}

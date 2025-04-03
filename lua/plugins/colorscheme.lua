@@ -1,6 +1,6 @@
 
 return {
-	"ellisonleao/gruvbox.nvim",
+	url = "git@github.com:ellisonleao/gruvbox.nvim",
 	version = "*",
 	lazy = false,
 	priority = 1000,						-- 确保优先加载

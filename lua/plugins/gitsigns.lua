@@ -65,7 +65,7 @@ local on_attach = function(bufnr)
 end
 
 return {
-	"lewis6991/gitsigns.nvim",
+	url = "git@github.com:lewis6991/gitsigns.nvim",
 	event = "BufReadPre",				-- 延迟加载（可选）
 	config = function()
 		require('gitsigns').setup({

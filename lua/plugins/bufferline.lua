@@ -1,6 +1,6 @@
 
 return {
-	"akinsho/bufferline.nvim",
+	url = "git@github.com:akinsho/bufferline.nvim",
 	version = "release",
 	dependencies = "nvim-tree/nvim-web-devicons",
 	event = "BufReadPre",							-- 延迟加载
@@ -22,8 +22,6 @@ return {
 		}
 	},
 	config = function(_, opts)
-		require("nvim-web-devicons").setup()
-
 		require("bufferline").setup(opts)
 
 		vim.keymap.set("n", "<leader>bh", "<Cmd>BufferLineCyclePrev<CR>",	{ desc = "Previous buffer" })					-- 切换到前一个缓冲区标签（向左切换）

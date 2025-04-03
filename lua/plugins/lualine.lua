@@ -1,6 +1,6 @@
 
 return {
-	"nvim-lualine/lualine.nvim",
+	url = "git@github.com:nvim-lualine/lualine.nvim",
 	dependencies = {
 		"ellisonleao/gruvbox.nvim",
 		"nvim-tree/nvim-web-devicons",									-- 图标支持
