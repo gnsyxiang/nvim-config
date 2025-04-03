@@ -1,3 +1,4 @@
+
 vim.g.mapleader = " "         -- 设置 Leader 键
 
 local options = {
@@ -48,16 +49,21 @@ end
 if IS_MAC then
 	vim.opt.clipboard:prepend({ "unnamedplus", "unnamed" })
 elseif IS_LINUX then
-	vim.g.clipboard = {
-		name = "xclip",
-		copy = {
-			["+"] = "xclip -selection clipboard",
-			["*"] = "xclip -selection clipboard",
-		},
-		paste = {
-			["+"] = "xclip -selection clipboard -o",
-			["*"] = "xclip -selection clipboard -o",
-		},
-	}
+	-- vim.g.clipboard = {
+	-- 	name = "xclip",
+	-- 	copy = {
+	-- 		["+"] = "xclip -selection clipboard",
+	-- 		["*"] = "xclip -selection clipboard",
+	-- 	},
+	-- 	paste = {
+	-- 		["+"] = "xclip -selection clipboard -o",
+	-- 		["*"] = "xclip -selection clipboard -o",
+	-- 	},
+	-- }
 end
+
+vim.cmd([[
+	set clipboard+=unnamed,unnamedplus
+	" set clipboard+=unnamedplus
+]])
 

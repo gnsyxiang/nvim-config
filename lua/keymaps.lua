@@ -1,3 +1,4 @@
+
 -- define common options
 local opts = {
     noremap = true,      -- non-recursive
@@ -33,10 +34,4 @@ vim.cmd([[
     :command Qa qa
     :command QA qa
 ]])
-
-vim.cmd([[
-	set clipboard+=unnamed,unnamedplus
-	" set clipboard+=unnamedplus
-]])
-
 
