@@ -15,6 +15,29 @@ local options = {
 	softtabstop = 4,
 	shiftwidth = 4,
 	shiftround = true,
+
+	-- 高亮当前行
+	-- 不高亮当前列
+	-- 右侧参考线
+	cursorline = true,
+	cursorcolumn = true,
+	colorcolumn = "80",
+
+	-- 显示光标位置
+	ruler = true,
+
+	--查找时忽略大小写
+	--智能大小写
+	ignorecase = true, 
+	smartcase = true, 
+
+	-- 搜索不要高亮
+	-- 边输入边搜索
+	hlsearch = true,
+	incsearch = true,
+
+	-- 禁止自动换行
+	wrap = false,
 }
 
 vim.opt.shortmess:append 'c'
