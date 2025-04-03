@@ -28,17 +28,19 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{import = "plugins.colorscheme"},
+
 	{import = "plugins.nvim-web-devicons"},
 	{import = "plugins.nvim-tree"},
-	{import = "plugins.gitsigns"},
 	{import = "plugins.bufferline"},
 	{import = "plugins.lualine"},
+
+	{import = "plugins.gitsigns"},
 }, {
-	install = {colorscheme = { "gruvbox" }}, -- 安装后自动应用主题
-	checker = {enabled = true}, -- 自动检查更新
+	install = {colorscheme = { "gruvbox" }},	-- 安装后自动应用主题
+	checker = {enabled = false},				-- 自动检查更新
 	performance = {
 		rtp = {
-			disabled_plugins = {"netrw"}, -- 禁用默认文件管理器
+			disabled_plugins = {"netrw"},		-- 禁用默认文件管理器
 		},
 	},
 })

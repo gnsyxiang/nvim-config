@@ -1,5 +1,8 @@
+
 return {
 	"ellisonleao/gruvbox.nvim",
+	version = "*",
+	lazy = false,
 	priority = 1000,						-- 确保优先加载
 	opts = {
 		contrast = "hard",					-- 对比度模式：hard/medium/soft

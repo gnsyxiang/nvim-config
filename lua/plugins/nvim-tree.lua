@@ -1,5 +1,6 @@
+
 local function on_attach(bufnr)
-	local api = require('nvim-tree.api')
+	local api = require("nvim-tree.api")
 
 	local function opts(desc)
 		return { desc = 'nvim-tree: ' .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
@@ -70,68 +71,61 @@ local function on_attach(bufnr)
 end
 
 return {
-	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = { "nvim-tree/nvim-web-devicons" }, -- 文件图标依赖
-		keys = {
-			{IS_MAC and "<M-n>" or "<A-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"}
+	"nvim-tree/nvim-tree.lua",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	keys = {
+		{IS_MAC and "<M-n>" or "<A-n>", "<cmd>NvimTreeToggle<cr>", desc = "Toggle file explorer"}
+	},
+	opts = {
+		on_attach = on_attach,
+		sort_by = "case_sensitive",
+		view = {
+			width = 35,
+			side = "left",
+			number = true,
+			relativenumber = true
 		},
-		opts = {
-			on_attach = on_attach,
-			sort_by = "case_sensitive",
-			view = {
-				width = 35,
-				side = "left",
-				number = true,
-				relativenumber = true
-			},
-			renderer = {
-				group_empty = true,
-				highlight_git = true,
-				icons = {
-					glyphs = {
-						git = {
-							unstaged = "✗",
-							staged = "✓",
-							unmerged = "",
-							renamed = "➜",
-							untracked = "★",
-							deleted = "",
-							ignored = "◌"
-						}
-					}
-				}
-			},
-			filters = {
-				dotfiles = false, -- 显示隐藏文件
-			},
-			actions = {
-				open_file = {
-					quit_on_open = false, -- 打开文件后不自动关闭窗口
-					window_picker = {
-						enable = false -- 禁用窗口选择器
+		renderer = {
+			group_empty = true,
+			highlight_git = true,
+			icons = {
+				glyphs = {
+					git = {
+						unstaged = "✗",
+						staged = "✓",
+						unmerged = "",
+						renamed = "➜",
+						untracked = "★",
+						deleted = "",
+						ignored = "◌"
 					}
 				}
 			}
 		},
-		config = function(_, opts)
-			-- 加载图标插件（可选但推荐）
-			require("nvim-web-devicons").setup()
-
-			-- 初始化文件树
-			require("nvim-tree").setup(opts)
-
-			-- 自动关闭 Neovim 当只剩文件树
-			vim.api.nvim_create_autocmd("BufEnter", {
-				nested = true,
-				callback = function()
-					if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == "nvim-tree" then
-						vim.cmd("quit")
-					end
-				end
-			})
-		end
+		filters = {
+			dotfiles = false,				-- 显示隐藏文件
+		},
+		actions = {
+			open_file = {
+				quit_on_open = false,		-- 打开文件后不自动关闭窗口
+				window_picker = {
+					enable = false			-- 禁用窗口选择器
+				}
+			}
+		}
 	},
+	config = function(_, opts)
+		require("nvim-tree").setup(opts)
 
+		-- 自动关闭 Neovim 当只剩文件树
+		vim.api.nvim_create_autocmd("BufEnter", {
+			nested = true,
+			callback = function()
+				if #vim.api.nvim_list_wins() == 1 and vim.bo.filetype == "nvim-tree" then
+					vim.cmd("quit")
+				end
+			end
+		})
+	end
 }
 

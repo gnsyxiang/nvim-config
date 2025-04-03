@@ -2,7 +2,7 @@
 return {
 	"akinsho/bufferline.nvim",
 	version = "release",
-	dependencies = "nvim-tree/nvim-web-devicons",	-- 依赖图标插件
+	dependencies = "nvim-tree/nvim-web-devicons",
 	event = "BufReadPre",							-- 延迟加载
 	opts = {
 		options = {
