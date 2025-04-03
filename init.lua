@@ -34,6 +34,7 @@ require("lazy").setup({
 	{import = "plugins.bufferline"},
 	{import = "plugins.lualine"},
 
+	{import = "plugins.indent-blankline"},
 	{import = "plugins.nvim-treesitter"},
 	{import = "plugins.gitsigns"},
 }, {
