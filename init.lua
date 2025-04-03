@@ -39,6 +39,7 @@ require("lazy").setup({
 	{import = "plugins.gitsigns"},
 	{import = "plugins.mason"},
 	{import = "plugins.nvim-lspconfig"},
+	{import = "plugins.nvim-cmp"},
 }, {
 	install = {colorscheme = { "gruvbox" }},	-- 安装后自动应用主题
 	checker = {enabled = false},				-- 自动检查更新
