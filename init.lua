@@ -34,6 +34,7 @@ require("lazy").setup({
 	{import = "plugins.bufferline"},
 	{import = "plugins.lualine"},
 
+	{import = "plugins.nvim-treesitter"},
 	{import = "plugins.gitsigns"},
 }, {
 	install = {colorscheme = { "gruvbox" }},	-- 安装后自动应用主题
