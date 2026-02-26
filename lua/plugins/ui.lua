@@ -14,4 +14,12 @@ return {
     --         require("configs.catppuccin")
     --     end,
     -- },
+    {
+        "lukas-reineke/indent-blankline.nvim",
+        event = { "BufReadPost", "BufNewFile" },
+        main = "ibl",
+        config = function()
+            require("configs.indent-blankline")
+        end,
+    },
 }
