@@ -9,8 +9,8 @@ local options = {
     autoread = true,                -- 当文件被外部程序修改时，自动加载
     clipboard = "unnamedplus",      -- 允许使用系统剪贴板
     mouse = 'a',                    -- 允许使用鼠标
-    updatetime = 250,               -- 减少更新延迟
-    timeoutlen = 300,               -- 快捷键超时时间
+    --updatetime = 250,               -- 减少更新延迟
+    --timeoutlen = 300,               -- 快捷键超时时间
     syntax = "off",                 -- 开启语法高亮
 
     -- 缩进配置
