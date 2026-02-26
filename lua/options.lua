@@ -14,7 +14,7 @@ local options = {
 
     -- 缩进配置
     -- 1，开启基础自动缩进
-    autoindent = true,          
+    autoindent = true,
     -- 2. 明确关闭旧式的、可能产生冲突的智能缩进
     smartindent = false,            -- smartindent 是一个过时的、功能有限的选项，你应该避免使用它
     cindent = false,                -- 是一个非常强大但专门化的工具，仅在你进行 C/C++ 开发且对风格有极致要求时考虑使用。
