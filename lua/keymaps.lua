@@ -40,6 +40,17 @@ map("n", "<C-Up>",      ":resize -2<CR>",           "")
 -- 相等比例
 map("n", "s=", "<C-w>=", opts)
 
+-- qflist（Quickfix List）
+-- :copen       打开 qflist 窗口（默认在底部，可调整大小）
+-- :cclose      关闭 qflist 窗口
+-- :cn/:cnext   跳转到 qflist 中的下一个条目
+-- :cp/:cprev   跳转到 qflist 中的上一个条目
+-- :cc [数字]   跳转到 qflist 中指定序号的条目
+-- :cexpr []    清空所有条目
+map('n', '<leader>co', ':copen<CR>',        '打开快速修复列表')
+map('n', '<leader>cc', ':cclose<CR>',       '关闭快速修复列表')
+map('n', '<leader>cl', ':cexpr []<CR>',     '清空快速修复列表')
+
 vim.cmd([[
     nnoremap ; :
     :command W w
