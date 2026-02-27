@@ -16,5 +16,13 @@ return {
             require("configs.telescope")
         end,
     },
+    {
+        "nvim-treesitter/nvim-treesitter",
+        lazy = false,
+        build = ":TSUpdate",
+        config = function()
+            require("configs.nvim-treesitter")
+        end,
+    },
 }
 
