@@ -49,7 +49,7 @@ map("n", "s=", "<C-w>=", opts)
 -- :cexpr []    清空所有条目
 map('n', '<leader>co', ':copen<CR>',        '打开快速修复列表')
 map('n', '<leader>cc', ':cclose<CR>',       '关闭快速修复列表')
-map('n', '<leader>cl', ':cexpr []<CR>',     '清空快速修复列表')
+-- map('n', '<leader>cl', ':cexpr []<CR>',     '清空快速修复列表')
 
 vim.cmd([[
     nnoremap ; :
