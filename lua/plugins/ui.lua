@@ -1,3 +1,4 @@
+
 return {
     {
         "ellisonleao/gruvbox.nvim",
@@ -23,3 +24,4 @@ return {
         end,
     },
 }
+
