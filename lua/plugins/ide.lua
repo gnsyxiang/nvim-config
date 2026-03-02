@@ -21,6 +21,7 @@ return {
         dependencies = {
             "nvim-tree/nvim-web-devicons",
         },
+        version = "*",                  -- 使用最新稳定版
         lazy = false,
         config = function()
             require("configs.nvim-tree")

@@ -1,4 +1,3 @@
-local api = require("nvim-tree.api")
 
 local function on_attach(bufnr)
     local api = require('nvim-tree.api')
@@ -21,44 +20,64 @@ local function on_attach(bufnr)
     vim.keymap.set("n", "<C-h>",    api.tree.toggle_hidden_filter,      opts("Toggle Filter: Dotfiles"))
 end
 
-require("nvim-tree").setup({
+local opts = {
     on_attach = on_attach,
-    filters = {
-        dotfiles = true,
-        custom = {"node_modules", "\\.cache", "^%.git$"},
-    },
-
-    sort_by = "name",
     view = {
-        width = 30,
-        side = "left",
+        side = "left",              -- 窗口位置（left/right）
+        width = 50,                 -- 窗口宽度
+        number = false,             -- 是否显示行号
+        relativenumber = false,     -- 是否显示相对行号
     },
+    filters = {
+        dotfiles = false,           -- 是否显示点文件（默认 false）
+        custom = {                  -- 自定义过滤的文件或目录
+            "node_modules",
+            "\\.cache",
+            "^%.git$"
+        },
+    },
+    git = {
+        enable = true,              -- 启用 git 状态图标
+        ignore = true,              -- 是否忽略 .gitignore 中的文件
+        timeout = 500,
+    },
+    sort_by = "name",
     renderer = {
-        group_empty = true,
+        highlight_git = true,           -- 高亮 git 状态
+        group_empty = true,             -- 折叠空文件夹
         indent_markers = {
-            enable = true,
+            enable = true,              -- 显示缩进标记
         },
         icons = {
             show = {
-                file = true,
-                folder = true,
-                folder_arrow = true,
+                git = true,             -- 显示 git 图标
+                file = true,            -- 显示文件图标
+                folder = true,          -- 显示文件夹图标
+                folder_arrow = true,    -- 显示文件夹箭头
             },
         },
     },
     actions = {
         open_file = {
-            quit_on_open = false,
-            window_picker = {
-                enable = false,
-            },
+            resize_window = false,      -- 打开文件时不自动调整窗口大小
+            quit_on_open = true,       -- 打开文件后不自动关闭文件树
         },
     },
     disable_netrw = true,
     hijack_netrw = true,
-})
+}
 
-vim.keymap.set("n", "<A-n>", api.tree.toggle, { desc = "打开/关闭文件树" })
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
+
+require("nvim-tree").setup(opts)
+
+vim.keymap.set("n", "<A-n>", "<cmd>NvimTreeToggle<CR>", { desc = "切换文件树" })
+vim.keymap.set("n", "<A-f>", "<cmd>NvimTreeFindFile<CR>", { desc = "Find current file in tree" })
 
 -- 可选：自动关闭 nvim-tree 当只剩文件树窗口时
 vim.api.nvim_create_autocmd("QuitPre", {
