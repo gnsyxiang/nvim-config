@@ -1,6 +1,17 @@
 
 return {
     {
+        "rmagatti/auto-session",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        lazy = false,
+        config = function()
+            require("configs.auto-session")
+        end,
+    },
+    {
         "nvim-telescope/telescope.nvim",
         tag = "v0.2.1",
         dependencies = {
