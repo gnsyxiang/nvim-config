@@ -1,26 +1,32 @@
+
 local telescope = require("telescope")
 local actions = require("telescope.actions")
 
 local open_with_trouble = require("trouble.sources.telescope").open
-local add_to_trouble = require("trouble.sources.telescope").add
 
 local opts = {
     defaults = {
+        prompt_prefix = "🔍 ",
+        selection_caret = " ",
+        path_display = { "smart" },
         file_ignore_patterns = {
-            ".git", ".cache", "node_modules", "target", "build", "dist",
+            ".git", ".cache",
+            "node_modules", "build", "target", "dist",
             "%.o", "%.a", "%.out", "%.class",
             "%.pdf", "%.mkv", "%.mp4", "%.zip",
         },
         mappings = {
             i = {
-                ["<ESC>"] = actions.close,
-                ["<CR>"]  = actions.select_default,
-                ["<A-j>"] = actions.move_selection_next,
-                ["<A-k>"] = actions.move_selection_previous,
-                ["<A-u>"] = actions.preview_scrolling_up,
-                -- ["<A-d>"] = actions.preview_scrolling_down,
+                ["<ESC>"]   = actions.close,
+                ["<CR>"]    = actions.select_default,
+                ["<A-j>"]   = actions.move_selection_next,
+                ["<A-k>"]   = actions.move_selection_previous,
+                ["<A-u>"]   = actions.preview_scrolling_up,
+                -- ["<A-d>"]   = actions.preview_scrolling_down,
+
                 ["<A-q>"] = actions.send_selected_to_qflist + actions.open_qflist,
                 ["<A-t>"] = open_with_trouble,
+
                 ["<A-d>"] = function(prompt_bufnr)
                     local actions = require("telescope.actions")
                     local action_state = require("telescope.actions.state")
@@ -31,20 +37,62 @@ local opts = {
                         vim.cmd("DiffviewOpen " .. commit_hash .. "^!")     -- 用 Diffview 打开该提交（加上 ^! 表示只显示该提交引入的变更）
                     end
                 end,
+
+                ["<C-n>"]   = actions.cycle_history_next,
+                ["<C-p>"]   = actions.cycle_history_prev,
+
+                ["<Down>"]  = actions.move_selection_next,
+                ["<Up>"]    = actions.move_selection_previous,
+                ["<C-x>"]   = actions.select_horizontal,
+                ["<C-v>"]   = actions.select_vertical,
+                ["<C-t>"]   = actions.select_tab,
             },
             n = {
+                ["q"]       = actions.close,
+                ["o"]       = actions.select_default,
+                ["H"]       = actions.select_horizontal,
+                ["V"]       = actions.select_vertical,
+                ["j"]       = actions.move_selection_next,
+                ["k"]       = actions.move_selection_previous,
+                ["K"]       = actions.preview_scrolling_up,
+                ["J"]       = actions.preview_scrolling_down,
+                ["<C-t>"]   = actions.select_tab,
+                ["gg"]      = actions.move_to_top,
+                ["G"]       = actions.move_to_bottom,
                 ["<A-t>"] = open_with_trouble,
-                ["q"] = actions.close,
+                -- ["<esc>"]   = actions.close,
+                -- ["<CR>"]    = actions.select_default,
+                -- ["<C-x>"]   = actions.select_horizontal,
+                -- ["<C-v>"]   = actions.select_vertical,
+                -- ["<C-t>"]   = actions.select_tab,
+                -- ["j"]       = actions.move_selection_next,
+                -- ["k"]       = actions.move_selection_previous,
+                -- ["H"]       = actions.move_to_top,
+                -- ["M"]       = actions.move_to_middle,
+                -- ["L"]       = actions.move_to_bottom,
+                -- ["<Down>"]  = actions.move_selection_next,
+                -- ["<Up>"]    = actions.move_selection_previous,
+                -- ["gg"]      = actions.move_to_top,
+                -- ["G"]       = actions.move_to_bottom,
+                -- ["<C-u>"]   = actions.preview_scrolling_up,
+                -- ["<C-d>"]   = actions.preview_scrolling_down,
             },
         },
         set_env = { ["COLORTERM"] = "truecolor" }, -- 启用真彩色
     },
     pickers = {
         -- 针对特定选择器的定制
-        find_files = {
-            hidden = true, -- 显示隐藏文件
-            find_command = { "fd", "--type", "f", "--strip-cwd-prefix" }, -- 如果安装了 fd，优先使用
-        },
+        -- find_files = {
+        --     hidden = true, -- 显示隐藏文件
+        --     find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix" }, -- 如果安装了 fd，优先使用
+        -- },
+        -- find_files = {
+        --     hidden = true,
+        --     -- 自动检测 fd，如果命令名不是 fd 请修改
+        --     find_command = vim.fn.executable('fd') == 1 and { 'fd', '--type', 'f', '--strip-cwd-prefix' }
+        --         or (vim.fn.executable('find') == 1 and { 'find', '--type', 'f', '--strip-cwd-prefix' })
+        --         or nil, -- 回退到默认 find
+        -- },
         live_grep = {
             additional_args = { "--hidden" }, -- 搜索隐藏文件
         },
@@ -66,8 +114,8 @@ local opts = {
 
 telescope.setup(opts)
 
--- 加载扩展
-pcall(telescope.load_extension, "fzf")
+-- 加载扩张
+pcall(telescope.load_extension, 'fzf')
 pcall(telescope.load_extension, "live_grep_args")
 pcall(telescope.load_extension, "ui-select")
 
