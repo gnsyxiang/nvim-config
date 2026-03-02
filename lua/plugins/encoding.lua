@@ -12,6 +12,13 @@ return {
         end,
     },
     {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = true
+        -- use opts = {} for passing setup options
+        -- this is equivalent to setup({}) function
+    },
+    {
         "nvim-telescope/telescope.nvim",
         tag = "v0.2.1",
         dependencies = {
