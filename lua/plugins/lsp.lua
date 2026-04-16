@@ -11,10 +11,22 @@ return {
         end,
     },
     {
+        "dchinmay2/clangd_extensions.nvim",     -- clangd 增强（内存占用、重构、头文件跳转）
+        dependencies = {
+            "neovim/nvim-lspconfig"
+        },
+        ft = { "c", "cpp", "objc", "objcpp", "cuda", "proto" }, -- 仅C/C++相关文件加载
+        config = function()
+            require("configs.clangd_extensions")
+        end,
+    },
+    {
         "nvimdev/lspsaga.nvim",                 -- 提供更美观、功能更丰富的代码导航、预览、重命名等界面
         dependencies = {
-            "neovim/nvim-lspconfig",
             "nvim-treesitter/nvim-treesitter",  -- 推荐用于更好的语法高亮
+            "nvim-tree/nvim-web-devicons",
+
+            "neovim/nvim-lspconfig",
             -- 如果使用代码片段，还可以添加 "L3MON4D3/LuaSnip"
         },
         event = "LspAttach",                    -- 当 LSP 附加到缓冲区时加载，提高启动速度

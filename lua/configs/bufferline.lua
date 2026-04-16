@@ -26,8 +26,8 @@ local function opts(tbl)
     return tbl
 end
 
-utils.keymap("n", "<Tab>",          "<cmd>BufferLineCycleNext<CR>",         opts{desc = "next"})
-utils.keymap("n", "<S-Tab>",        "<cmd>BufferLineCyclePrev<CR>",         opts{desc = "prev"})
+-- utils.keymap("n", "<Tab>",          "<cmd>BufferLineCycleNext<CR>",         opts{desc = "next"})
+-- utils.keymap("n", "<S-Tab>",        "<cmd>BufferLineCyclePrev<CR>",         opts{desc = "prev"})
 utils.keymap("n", "<leader>bn",     "<cmd>BufferLineCycleNext<CR>",         opts{desc = "next"})
 utils.keymap("n", "<leader>bN",     "<cmd>BufferLineCyclePrev<CR>",         opts{desc = "prev"})
 

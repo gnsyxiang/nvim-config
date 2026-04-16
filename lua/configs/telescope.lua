@@ -6,19 +6,23 @@ local open_with_trouble = require("trouble.sources.telescope").open
 
 local opts = {
     defaults = {
+        path_display = { "smart" },         -- 智能缩短路径，平衡信息量和可读性
+        sorting_strategy = 'ascending',     -- 让匹配度最高的结果在顶部
+        layout_strategy = 'horizontal',     -- 或 'vertical'、'center' 等
+
         prompt_prefix = "🔍 ",
         selection_caret = " ",
-        path_display = { "smart" },
         file_ignore_patterns = {
             ".git", ".cache",
             "node_modules", "build", "target", "dist",
             "%.o", "%.a", "%.out", "%.class",
             "%.pdf", "%.mkv", "%.mp4", "%.zip",
         },
+
         mappings = {
             i = {
                 ["<ESC>"]   = actions.close,
-                ["<CR>"]    = actions.select_default,
+
                 ["<A-j>"]   = actions.move_selection_next,
                 ["<A-k>"]   = actions.move_selection_previous,
                 ["<A-u>"]   = actions.preview_scrolling_up,
@@ -38,44 +42,29 @@ local opts = {
                     end
                 end,
 
-                ["<C-n>"]   = actions.cycle_history_next,
-                ["<C-p>"]   = actions.cycle_history_prev,
-
-                ["<Down>"]  = actions.move_selection_next,
-                ["<Up>"]    = actions.move_selection_previous,
-                ["<C-x>"]   = actions.select_horizontal,
-                ["<C-v>"]   = actions.select_vertical,
+                ["<CR>"]    = actions.select_default,
+                ["<A-h>"]   = actions.select_horizontal,
+                ["<A-v>"]   = actions.select_vertical,
                 ["<C-t>"]   = actions.select_tab,
             },
             n = {
                 ["q"]       = actions.close,
+
+                -- ["<CR>"] = actions.select_default,
                 ["o"]       = actions.select_default,
                 ["H"]       = actions.select_horizontal,
                 ["V"]       = actions.select_vertical,
+                ["T"]       = actions.select_tab,
+
                 ["j"]       = actions.move_selection_next,
                 ["k"]       = actions.move_selection_previous,
                 ["K"]       = actions.preview_scrolling_up,
                 ["J"]       = actions.preview_scrolling_down,
-                ["<C-t>"]   = actions.select_tab,
-                ["gg"]      = actions.move_to_top,
-                ["G"]       = actions.move_to_bottom,
-                ["<A-t>"] = open_with_trouble,
-                -- ["<esc>"]   = actions.close,
-                -- ["<CR>"]    = actions.select_default,
-                -- ["<C-x>"]   = actions.select_horizontal,
-                -- ["<C-v>"]   = actions.select_vertical,
-                -- ["<C-t>"]   = actions.select_tab,
-                -- ["j"]       = actions.move_selection_next,
-                -- ["k"]       = actions.move_selection_previous,
                 -- ["H"]       = actions.move_to_top,
-                -- ["M"]       = actions.move_to_middle,
-                -- ["L"]       = actions.move_to_bottom,
-                -- ["<Down>"]  = actions.move_selection_next,
-                -- ["<Up>"]    = actions.move_selection_previous,
-                -- ["gg"]      = actions.move_to_top,
-                -- ["G"]       = actions.move_to_bottom,
-                -- ["<C-u>"]   = actions.preview_scrolling_up,
-                -- ["<C-d>"]   = actions.preview_scrolling_down,
+                ["gg"]      = actions.move_to_top,
+                ["M"]       = actions.move_to_middle,
+                --["L"]       = actions.move_to_bottom,
+                ["G"]       = actions.move_to_bottom,
             },
         },
         set_env = { ["COLORTERM"] = "truecolor" }, -- 启用真彩色

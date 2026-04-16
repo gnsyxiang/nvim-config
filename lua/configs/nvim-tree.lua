@@ -24,7 +24,7 @@ local opts = {
     on_attach = on_attach,
     view = {
         side = "left",              -- 窗口位置（left/right）
-        width = 50,                 -- 窗口宽度
+        width = 35,                 -- 窗口宽度
         number = false,             -- 是否显示行号
         relativenumber = false,     -- 是否显示相对行号
     },
@@ -60,7 +60,7 @@ local opts = {
     actions = {
         open_file = {
             resize_window = false,      -- 打开文件时不自动调整窗口大小
-            quit_on_open = true,       -- 打开文件后不自动关闭文件树
+            quit_on_open = false,       -- 打开文件后不自动关闭文件树
         },
     },
     disable_netrw = true,

@@ -1,0 +1,45 @@
+
+return {
+--     {
+--         "mfussenegger/nvim-lint",           -- 代码检查引擎
+--         dependencies = {
+--             "mason-org/mason.nvim",         -- 管理外部工具
+--         },
+--         config = function()
+--             -- 在这里定义不同文件类型使用什么 linter
+--             -- **注意：这里的名字必须是 nvim-lint 能识别的，但 mason-nvim-lint 会帮我们安装对应的可执行文件**
+--             require("lint").linters_by_ft = {
+--                 python = { "ruff" },       -- 使用 ruff 检查 python
+--                 -- c = { "clang-tidy" },         -- 使用 cppcheck 检查 C
+--                 -- cpp = { "clang-tidy" },       -- 使用 cppcheck 检查 C++
+--                 -- 如果你想用 clang-tidy，可以改成 { "clang-tidy" }
+--             }
+--
+--             vim.api.nvim_create_autocmd({ "BufWritePost" }, {   -- 保存文件时自动触发检查
+--                 callback = function()
+--                     require("lint").try_lint()
+--                 end,
+--             })
+--         end,
+--     },
+--     {
+--         "rshkarin/mason-nvim-lint",         -- 桥接插件，负责安装 linter
+--         dependencies = {
+--             "mason-org/mason.nvim",         -- 管理外部工具
+--             "mfussenegger/nvim-lint",       -- 代码检查引擎
+--         },
+--         config = function()
+--             require("mason-nvim-lint").setup({
+--                 -- **自动安装的核心配置**
+--                 -- 设置为 true 后，只要你在 nvim-lint 中配置了某个 linter，
+--                 -- 它就会自动通过 Mason 安装（如果 Mason 仓库里有的话）
+--                 automatic_installation = true,
+--
+--                 -- 如果你想额外安装一些 nvim-lint 本身不支持，但 Mason 有的工具
+--                 -- 例如，确保安装 bacon（Rust linter，nvim-lint 可能不直接支持）
+--                 -- ensure_installed = { "bacon" },
+--             })
+--         end,
+--     },
+}
+

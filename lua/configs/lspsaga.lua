@@ -2,77 +2,105 @@
 local config = {
     -- UI 配置
     ui = {
-        title = true,           -- 显示窗口标题
         border = "single",      -- 边框样式: single, double, rounded, solid, shadow
-        winblend = 0,           -- 窗口透明度
         expand = "",           -- 展开图标
         collapse = "",         -- 折叠图标
-        code_action = "💡",     -- 代码操作图标
-        incoming = " ",        -- 传入调用图标
-        outgoing = " ",        -- 传出调用图标
         hover = ' ',           -- 悬停图标
         kind = {},              -- 类型图标（会自动从 nvim-web-devicons 获取）
     },
 
     -- 悬停配置
     hover = {
-        max_width = 0.9,        -- 最大宽度（屏幕宽度的百分比）
-        max_height = 0.8,       -- 最大高度（屏幕高度的百分比）
-        open_link = "gx",       -- 打开链接的快捷键
-        open_browser = "open",  -- 打开浏览器命令（macOS）
-    },
-
-    -- 符号大纲
-    outline = {
-        win_position = "right", -- 大纲窗口位置: left, right
-        win_width = 30,         -- 大纲窗口宽度
-        auto_preview = true,    -- 自动预览
-        show_detail = true,     -- 显示详细信息
-        auto_refresh = true,    -- 自动刷新
-        keys = {                        -- 大纲键位
-            jump = "o",
-            expand_collapse = "u",
-            quit = "q",
-        },
     },
 
     -- 诊断配置
     diagnostic = {
-        show_code_action = true,        -- 显示代码操作
-        show_layout = "float",          -- 布局: float, normal
-        show_normal_height = 10,        -- 正常布局高度
-        jump_num_shortcut = true,       -- 使用数字快捷键跳转
-        max_width = 0.8,                -- 最大宽度
-        max_height = 0.6,               -- 最大高度
-        text_hl_follow = true,          -- 文本高亮跟随
-        border_follow = true,           -- 边框跟随
-        extend_relatedInformation = false, -- 扩展相关信息
-        diagnostic_only_current = false, -- 仅显示当前行的诊断
+        show_layout = "float",                  -- 布局: float, normal
+        auto_preview = false,                   -- 跳转时是否自动预览代码操作
+        jump_num_shortcut = true,               -- 使用数字快捷键跳转
+        diagnostic_only_current = true,         -- 仅显示当前行的诊断
         keys = {
-            exec_action = "o",          -- 执行操作
-            quit = "q",                 -- 退出
-            toggle_or_jump = "<CR>",    -- 切换或跳转
-            quit_in_show = { "q", "<ESC>" }, -- 在显示中退出
+            exec_action = "o",                  -- 执行操作
+            quit = "q",                         -- 退出
+            toggle_or_jump = "<CR>",            -- 切换或跳转
+            quit_in_show = { "q", "<ESC>" },    -- 在显示中退出
         },
     },
 
     -- 代码操作
     code_action = {
-        num_shortcut = true,            -- 使用数字快捷键
-        show_server_name = true,        -- 显示服务器名称
-        extend_gitsigns = false,        -- 扩展 gitsigns
+        num_shortcut = true,                    -- 使用数字快捷键
+        show_server_name = true,                -- 显示服务器名称
+        extend_gitsigns = false,                -- 扩展 gitsigns
         keys = {
-            quit = "q",                 -- 退出
-            exec = "<CR>",              -- 执行
+            quit = "q",                         -- 退出
+            exec = "<CR>",                      -- 执行
         },
     },
 
-    -- 实现
-    implement = {
-        enable = false,                 -- 启用实现功能
-        sign = true,                    -- 显示标记
-        virtual_text = false,           -- 虚拟文本
-        priority = 100,                 -- 优先级
+    -- 灯光 bulb（代码操作提示）
+    lightbulb = {
+        enable = true,
+    },
+
+    -- 滚动预览
+    scroll_preview = {
+        scroll_down = '<C-f>',
+        scroll_up = '<C-b>',
+    },
+
+    -- 查找器
+    finder = {
+        default = "ref+imp",            -- 默认模式: ref+imp, ref, imp
+        layout = "float",               -- 布局: float, normal
+        keys = {
+            shuttle = '[w',
+            toggle_or_open = 'o',
+            vsplit = 'v',
+            split = 'h',
+            tabe = 't',
+            tabnew = 'r',
+            quit = 'q',
+            close = '<C-c>k',
+        },
+    },
+
+    -- 定义预览
+    definition = {
+        keys = {
+            edit = '<C-o>',
+            vsplit = 'v',
+            split = 'h',
+            tabe = '<C-t>',
+            tabnew = '<C-c>n',
+            quit = 'q',
+            close = '<ESC>',
+        },
+    },
+
+    -- 重命名
+    rename = {
+        keys = {                    -- 重命名键位
+            quit = "q",
+            exec = "<CR>",
+            select = "x",
+        },
+    },
+
+    -- 面包屑导航
+    symbol_in_winbar = {
+        enable = true,
+    },
+
+    -- 符号大纲
+    outline = {
+        win_width = 50,
+        close_after_jump = true,
+        keys = {
+            toggle_or_jump = 'o',
+            quit = 'q',
+            jump = 'e',
+        },
     },
 
     -- 调用层次结构
@@ -83,109 +111,44 @@ local config = {
             vsplit = "v",               -- 垂直分割
             split = "h",                -- 水平分割
             tabe = "t",                 -- 标签页
-            quit = "q",                 -- 退出
-            shuttle = "[]",             -- 在层次间移动
-            toggle_or_req = "u",        -- 切换或请求
             close = "<C-c>k",           -- 关闭
+            quit = "q",                 -- 退出
+            shuttle = "[w",             -- 在层次间移动
+            toggle_or_req = "u",        -- 切换或请求
         },
     },
 
-    -- 灯光 bulb（代码操作提示）
-    lightbulb = {
-        enable = true,                  -- 启用
-        enable_in_insert = true,        -- 在插入模式启用
-        sign = true,                    -- 显示标记
-        sign_priority = 40,             -- 标记优先级
-        virtual_text = true,            -- 虚拟文本
-    },
-
-    -- 滚动预览
-    scroll_preview = {
-        scroll_down = "<C-f>",          -- 向下滚动
-        scroll_up = "<C-b>",            -- 向上滚动
-    },
-
-    -- 查找器
-    finder = {
-        max_height = 0.5,               -- 最大高度
-        left_width = 0.3,               -- 左侧宽度
-        right_width = 0.5,              -- 右侧宽度
-        default = "ref+imp",            -- 默认模式: ref+imp, ref, imp
-        methods = {                     -- 查找方法
-            tyd = "textDocument/typeDefinition",
-            tid = "textDocument/typeDefinition",
-            t = "textDocument/typeDefinition",
-            d = "textDocument/definition",
-            i = "textDocument/implementation",
-            r = "textDocument/references",
-        },
-        layout = "float",               -- 布局: float, normal
-        silent = false,                 -- 静默模式
-        -- silent = true,              -- 关键优化：禁用查找状态输出
-        filter = {},                    -- 过滤器
-        fname_sub = nil,                -- 文件名替换
-        sp_inexist = false,             -- 显示不存在的符号
-        include_declaration = false,    -- 包含声明
-        force_max_height = false,   -- 是否默认保持
-        keys = {                    -- 查找器键位
-            -- jump_to = "p",
-            expand_or_jump = "o",
-            vsplit = "v",
-            split = "h",
-            tabe = "t",
-            tabnew = "r",
-            quit = "q",
-            close = "<C-c>k",
-        },
-    },
-
-    -- 定义预览
-    definition = {
-        width = 0.6,                    -- 宽度
-        height = 0.5,                   -- 高度
-        save_pos = false,               -- 保存位置
-        quit = "q",                     -- 退出
-        edit = "<C-c>o",                -- 编辑
-    },
-
-    -- 重命名
-    rename = {
-        quit = "<C-c>",                 -- 退出
-        exec = "<CR>",                  -- 执行
-        in_select = true,               -- 在选中模式
-        whole_project = true,           -- 整个项目
-        confirm = "<CR>",               -- 确认
-        -- auto_save = false,          -- 重命名时自动保存
-        -- project_max_width = 0.5,    -- 项目范围重命名
-        -- project_max_height = 0.5,
-        keys = {                    -- 重命名键位
-            quit = "q",
-            exec = "<CR>",
-            select = "x",
-        },
-    },
-
-    -- 符号信息
-    symbol_in_winbar = {
-        enable = true,                 -- 启用（需要 Neovim 0.8+）
-        separator = "  ",              -- 分隔符
-        hide_keyword = false,           -- 隐藏关键字
-        show_file = true,               -- 显示文件
-        folder_level = 1,               -- 文件夹级别
-        color_mode = true,              -- 颜色模式
-        delay = 300,                    -- 延迟
-    },
-
-    -- 引用设置
-    reference = {
-        -- 引用预览键位
+    -- 类型层次结构
+    typehierarchy = {
+        layout = 'float',
         keys = {
-            edit = "e",
-            vsplit = "v",
-            split = "h",
-            tabe = "t",
-            quit = "q",
+            edit = 'e',
+            vsplit = 'v',
+            split = 'h',
+            tabe = 't',
+            close = '<C-c>k',
+            quit = 'q',
+            shuttle = '[w',
+            toggle_or_req = 'u',
         },
+    },
+
+    -- 实现
+    implement = {
+        enable = false,                 -- 启用实现功能
+    },
+
+    -- 光标信标
+    -- 当快速移动光标时，光标位置会短暂高亮闪烁，让你立刻在屏幕上定位到光标的新位置
+    beacon = {
+        enable = true,
+        frequency = 7,
+    },
+
+    -- 浮动终端
+    floaterm = {
+        height = 0.8,
+        width = 0.8,
     },
 }
 
