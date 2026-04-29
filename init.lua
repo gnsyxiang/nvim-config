@@ -6,5 +6,6 @@ require("utils")
 require("options")
 require("keymaps")
 
+require("comment")
 require("lazy_config")
 
