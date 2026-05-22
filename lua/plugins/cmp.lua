@@ -1,11 +1,18 @@
 return {
     {
-        "L3MON4D3/LuaSnip",                     -- 片段引擎
+        "L3MON4D3/LuaSnip",
         version = "v2.*",
         build = "make install_jsregexp",
-        dependencies = {
-            "rafamadriz/friendly-snippets",     -- 预定义片段集合
-        },
+        dependencies = { "rafamadriz/friendly-snippets" },
+        config = function()
+            require("luasnip.loaders.from_vscode").lazy_load({
+                -- paths = { vim.fn.stdpath("config") .. "/snippets" }
+                paths = { "./snippets" }
+            })
+
+            -- 加载友好片段
+            require("luasnip.loaders.from_vscode").lazy_load()
+        end,
     },
     {
         "hrsh7th/nvim-cmp",                     -- 补全引擎核心
