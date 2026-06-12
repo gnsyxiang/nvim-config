@@ -36,7 +36,7 @@ vim.lsp.config('clangd', {
         '--background-index',                           -- 后台索引项目，打开大型项目不卡顿
         '--clang-tidy',                                 -- 开启代码规范检查（变量命名、空指针、未使用变量等）
         '--completion-style=detailed',                  -- 补全显示函数参数+返回值
-        '--header-insertion=iwyu',                      -- 自动插入缺失头文件（iwyu=include-what-you-use）
+        '--header-insertion=never',                     -- 自动插入缺失头文件（iwyu=include-what-you-use）
         '--offset-encoding=utf-16',                     -- 修复与 nvim-cmp 等补全插件乱码问题
         '--pch-storage=memory',                         -- 预编译头放内存，大幅提速
         '--enable-config',                              -- 允许项目根目录使用 .clangd 配置文件

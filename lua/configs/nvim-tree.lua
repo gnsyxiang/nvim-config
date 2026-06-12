@@ -42,7 +42,7 @@ local opts = {
     },
     view = {
         side = "left",              -- 窗口位置（left/right）
-        width = 30,                 -- 窗口宽度
+        width = 40,                 -- 窗口宽度
     },
     renderer = {
         highlight_git = true,       -- 高亮 git 状态
