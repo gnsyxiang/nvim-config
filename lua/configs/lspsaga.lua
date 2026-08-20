@@ -69,8 +69,8 @@ local config = {
     definition = {
         keys = {
             edit = '<C-o>',
-            vsplit = 'v',
-            split = 'h',
+            vsplit = 'V',
+            split = 'H',
             tabe = '<C-t>',
             tabnew = '<C-c>n',
             quit = 'q',
@@ -81,7 +81,7 @@ local config = {
     -- 重命名
     rename = {
         keys = {                    -- 重命名键位
-            quit = "q",
+            quit = "<ESC>",
             exec = "<CR>",
             select = "x",
         },
