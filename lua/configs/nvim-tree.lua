@@ -31,14 +31,11 @@ end
 local opts = {
     -- 禁用 netrw
     disable_netrw = true,
-    hijack_netrw = true,
 
     on_attach = on_attach,
 
     sort = {
         sorter = "case_sensitive",
-        folders_first = true,
-        files_first = false,
     },
     view = {
         side = "left",              -- 窗口位置（left/right）
