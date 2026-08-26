@@ -36,5 +36,16 @@ return {
             require("configs.nvim-tree")
         end,
     },
+    {
+        "rmagatti/auto-session",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-telescope/telescope.nvim",
+        },
+        lazy = false,
+        config = function()
+            require("configs.auto-session")
+        end,
+    },
 }
 
