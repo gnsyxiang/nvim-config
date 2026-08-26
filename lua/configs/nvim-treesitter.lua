@@ -5,7 +5,7 @@ require('nvim-treesitter').setup {
 }
 
 -- 2. 安装 C/C++ 及相关解析器
-require('nvim-treesitter').install { 
+require('nvim-treesitter').install {
     'c',           -- C 语言
     'cpp',         -- C++
     'cuda',        -- CUDA（如果做 GPU 编程）
@@ -17,7 +17,7 @@ require('nvim-treesitter').install {
 
 -- 3. 为 C/C++ 及相关文件类型启用 Treesitter 功能
 vim.api.nvim_create_autocmd('FileType', {
-    pattern = { 
+    pattern = {
         'c', 'cpp', 'h', 'hpp',    -- C/C++ 源文件和头文件
         'cuda',                     -- CUDA 文件
         'cmake',                    -- CMakeLists.txt
