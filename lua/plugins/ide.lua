@@ -11,6 +11,16 @@ return {
         end,
     },
     {
+        'nvim-lualine/lualine.nvim',
+        event = "VeryLazy",
+        dependencies = {
+            'nvim-tree/nvim-web-devicons'
+        },
+        config = function()
+            require("configs.lualine")
+        end,
+    },
+    {
         "nvim-telescope/telescope.nvim",
         version = '*',                          -- 推荐锁定到最新发布版本，以避免潜在的兼容性问题
         cmd = "Telescope",
