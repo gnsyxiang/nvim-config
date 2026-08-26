@@ -37,5 +37,19 @@ return {
             require("configs.nvim-autopairs")
         end,
     },
+    {
+        "danymat/neogen",
+        dependencies = {
+            "nvim-treesitter/nvim-treesitter",
+            "L3MON4D3/LuaSnip",
+        },
+        cmd = "Neogen",
+        keys = {
+            { "<leader>nf", function() require("neogen").generate() end, desc = "生成函数/类注释" },
+        },
+        config = function()
+            require("configs.neogen")
+        end,
+    },
 }
 
