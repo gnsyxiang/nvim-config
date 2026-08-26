@@ -30,5 +30,12 @@ return {
             require("configs.nvim-surround")
         end,
     },
+    {
+        'windwp/nvim-autopairs',
+        event = "InsertEnter",
+        config = function()
+            require("configs.nvim-autopairs")
+        end,
+    },
 }
 
