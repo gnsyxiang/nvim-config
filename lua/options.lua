@@ -16,6 +16,11 @@ local options = {
   softtabstop = 4,                        -- 编辑时Tab键插入4个空格
   expandtab = true,                       -- 将Tab转换为空格
 
+    -- 搜索配置
+    ignorecase = true,              -- 查找时忽略大小写
+    smartcase = true,               -- 包含大写时区分大小写
+    hlsearch = true,                -- 搜索高亮
+    incsearch = true,               -- 边输入边搜索
 
   number = true,                          -- 显示行号
   relativenumber = true,                  -- 显示相对行号
