@@ -6,5 +6,6 @@ require("options")
 require("autocmds")
 
 require("keymaps")
+require("comment")
 
 require("lazy_config")
