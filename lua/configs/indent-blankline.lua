@@ -2,6 +2,7 @@
 local opts = {
     indent = {
         char = "┆",                         -- 缩进竖线的字符（可选：│、┆、┊ 等）
+        tab_char = "▸",
     },
     scope = {
         enabled = false,       -- 启用语法块范围高亮
