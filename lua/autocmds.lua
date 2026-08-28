@@ -77,8 +77,6 @@ api.nvim_create_autocmd("FileType", {
     group = indent_group,
     pattern = { "make", "makefile" },
     callback = function()
-        opt_local.tabstop = 8
-        opt_local.shiftwidth = 8
         opt_local.expandtab = false
     end,
 })
